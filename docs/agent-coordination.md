@@ -11,18 +11,22 @@ table when claiming or handing off work so parallel agents do not duplicate it.
 | --- | --- | --- | --- |
 | ThePlayerRolo | AutoSaveD rework | upstream PR #116 (`main`) | Active |
 | Claude Code | GX graphics library | External agent branch | Active; reserved |
-| Codex | `game/skyfs_adx.c` / `dlfs.c` (`0x80013398`–`0x80014154`) | `pr-skyfs-adx` planned | Active; 11/12 functions exact, final function differs by two register allocations |
-| Codex agents | Complete original `Peripheral.cpp` TU (`0x80014154`–`0x80015AC0`) | Branch deferred until 100% | Active; 19/20 functions exact, final function differs by four register-choice instructions |
+| Codex + agents | Complete original `game/skyfs_adx.c` TU (`0x80013038`–`0x80014154`) | `pr-skyfs-adx` planned | Active; 19 functions, complete section layout proven; 17 functions exact and the final real code difference is two register-allocation instructions in `skyFread` |
+| Codex agents | Complete original `Peripheral.cpp` TU (`0x80014154`–`0x80015AC0`) | Branch deferred until 100% | Paused behind `skyfs_adx.c`; 19/20 functions exact, final function differs by four register-choice instructions |
 
 The unified C++ AdvertiseD reconstruction supersedes the older fragmented C
 branches. Do not claim or update those fragments: all 434 functions across its
 21 objects are exact on `pr-advertised`.
 
+The earlier `pr-module-loader` branch is also superseded and must not be opened
+or merged as a standalone PR. Debug-source provenance and whole-object compiler
+behavior prove that its range, the adjacent DVD-status functions, state setter,
+and RenderWare file callbacks are one original `skyfs_adx.c` translation unit.
+
 ## Ready for PR
 
 | Owner | Scope | Branch | Verification |
 | --- | --- | --- | --- |
-| Codex | `game/module_loader.cpp` | `pr-module-loader` | 4/4 functions and all owned sections 100%; full build and DOL SHA-1 gate pass |
 | Codex | AdvertiseD overlay | `pr-advertised` | 434/434 functions across 21 objects 100%; exact REL/DOL and full-build gates pass |
 
 ## Recently integrated
@@ -34,7 +38,8 @@ all 730 SDK functions at 100%.
 
 ## PR conventions
 
-- One file or coherent tree per PR.
+- One complete original file or coherent original tree per PR; do not split a
+  source file at convenient address boundaries.
 - Branches use `pr-*`.
 - Prefer C++ unless the original file is positively identified as C.
 - Replace address-based names with evidence-backed names; mark guesses.
