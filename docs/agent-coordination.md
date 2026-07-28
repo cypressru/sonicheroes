@@ -11,8 +11,8 @@ table when claiming or handing off work so parallel agents do not duplicate it.
 | --- | --- | --- | --- |
 | ThePlayerRolo | AutoSaveD rework | upstream PR #116 (`main`) | Active |
 | Claude Code | GX graphics library | External agent branch | Active; reserved |
-| Codex | `game/dlfs.c` (`0x80013398`–`0x80014154`) | `pr-dlfs` planned | Active; 11/12 functions exact |
-| Codex agent | Complete original `Peripheral.cpp` TU (boundary audit starts at `0x80014954`) | Branch deferred until 100% | Active; PS2 debug-symbol guided |
+| Codex | `game/skyfs_adx.c` / `dlfs.c` (`0x80013398`–`0x80014154`) | `pr-skyfs-adx` planned | Active; 11/12 functions exact, final function differs by two register allocations |
+| Codex agents | Complete original `Peripheral.cpp` TU (`0x80014154`–`0x80015AC0`) | Branch deferred until 100% | Active; 19/20 functions exact, final function differs by four register-choice instructions |
 
 The unified C++ AdvertiseD reconstruction supersedes the older fragmented C
 branches. Do not claim or update those fragments: all 434 functions across its
@@ -36,6 +36,7 @@ all 730 SDK functions at 100%.
 
 - One file or coherent tree per PR.
 - Branches use `pr-*`.
+- Prefer C++ unless the original file is positively identified as C.
 - Replace address-based names with evidence-backed names; mark guesses.
 - Keep the implementation in C or C++ unless matching is demonstrably
   impossible without assembly.
