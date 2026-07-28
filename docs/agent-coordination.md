@@ -22,7 +22,7 @@ branches. Do not claim or update those fragments: all 434 functions across its
 | Owner | Scope | Branch | Verification |
 | --- | --- | --- | --- |
 | Codex | `game/module_loader.cpp` | `pr-module-loader` | 4/4 functions and all owned sections 100%; full build and DOL SHA-1 gate pass |
-| Codex | `game/demo_helpers.cpp` (`0x80014954`–`0x80014994`) | `pr-demo-helpers` planned | 2/2 functions and `.text` 100%; awaiting isolated full-build gate |
+| Codex | `game/demo_helpers.cpp` (`0x80014954`–`0x80014994`) | `pr-demo-helpers` | 2/2 functions and `.text` 100%; full build, 18-file, and DOL SHA-1 gates pass |
 | Codex | AdvertiseD overlay | `pr-advertised` | 434/434 functions across 21 objects 100%; exact REL/DOL and full-build gates pass |
 
 ## Recently integrated
