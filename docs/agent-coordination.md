@@ -12,6 +12,7 @@ table when claiming or handing off work so parallel agents do not duplicate it.
 | ThePlayerRolo | AutoSaveD rework | upstream PR #116 (`main`) | Active |
 | Claude Code | GX graphics library | External agent branch | Active; reserved |
 | Codex | `game/dlfs.c` (`0x80013398`–`0x80014154`) | `pr-dlfs` planned | Active; 11/12 functions exact |
+| Codex agent | Complete original `Peripheral.cpp` TU (boundary audit starts at `0x80014954`) | Branch deferred until 100% | Active; PS2 debug-symbol guided |
 
 The unified C++ AdvertiseD reconstruction supersedes the older fragmented C
 branches. Do not claim or update those fragments: all 434 functions across its
@@ -22,7 +23,6 @@ branches. Do not claim or update those fragments: all 434 functions across its
 | Owner | Scope | Branch | Verification |
 | --- | --- | --- | --- |
 | Codex | `game/module_loader.cpp` | `pr-module-loader` | 4/4 functions and all owned sections 100%; full build and DOL SHA-1 gate pass |
-| Codex | `game/demo_helpers.cpp` (`0x80014954`–`0x80014994`) | `pr-demo-helpers` | 2/2 functions and `.text` 100%; full build, 18-file, and DOL SHA-1 gates pass |
 | Codex | AdvertiseD overlay | `pr-advertised` | 434/434 functions across 21 objects 100%; exact REL/DOL and full-build gates pass |
 
 ## Recently integrated
