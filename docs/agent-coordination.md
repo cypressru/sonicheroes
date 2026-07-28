@@ -1,6 +1,6 @@
 # Agent coordination
 
-Updated 2026-07-27 by Codex against upstream `e4d6579`.
+Updated 2026-07-28 by Codex against upstream `0602d41`.
 
 Check this file and the upstream open-PR list before starting a TU. Update the
 table when claiming or handing off work so parallel agents do not duplicate it.
@@ -10,17 +10,20 @@ table when claiming or handing off work so parallel agents do not duplicate it.
 | Owner | Scope | Branch / PR | State |
 | --- | --- | --- | --- |
 | ThePlayerRolo | AutoSaveD rework | upstream PR #116 (`main`) | Active |
-| Codex | `advertiseD/slot_query.c` | `pr-advertise-slot-query` | Claimed next |
+| Claude Code | GX graphics library | External agent branch | Active; reserved |
+| Codex | `game/dlfs.c` (`0x80013398`–`0x80014154`) | `pr-dlfs` planned | Active; 11/12 functions exact |
 
-The upstream report at `e4d6579` had three remaining configured game functions:
-one each in `advertiseD/demo_object.c`, `advertiseD/slot_query.c`, and
-`autosaveD/widget_slices.c`. AutoSaveD is reserved while PR #116 is active.
+The unified C++ AdvertiseD reconstruction supersedes the older fragmented C
+branches. Do not claim or update those fragments: all 434 functions across its
+21 objects are exact on `pr-advertised`.
 
 ## Ready for PR
 
 | Owner | Scope | Branch | Verification |
 | --- | --- | --- | --- |
-| Codex | `advertiseD/demo_object.c` | `pr-advertise-demo-object` | 3/3 functions and `.text` 100%; REL link and 18-file SHA-1 gate pass |
+| Codex | `game/module_loader.cpp` | `pr-module-loader` | 4/4 functions and all owned sections 100%; full build and DOL SHA-1 gate pass |
+| Codex | `game/demo_helpers.cpp` (`0x80014954`–`0x80014994`) | `pr-demo-helpers` planned | 2/2 functions and `.text` 100%; awaiting isolated full-build gate |
+| Codex | AdvertiseD overlay | `pr-advertised` | 434/434 functions across 21 objects 100%; exact REL/DOL and full-build gates pass |
 
 ## Recently integrated
 
